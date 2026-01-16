@@ -1,0 +1,9 @@
+[project]
+name = "fastapi-corey-schafer"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "black>=25.12.0",
+    "fastapi[standard]>=0.128.0",
+]
