@@ -40,7 +40,7 @@ def get_posts():
     return posts
 
 
-@app.get("/api/posts/{post_id", name="post_page")
+@app.get("/api/posts/{post_id}")
 def get_post(post_id: int):
 
     for post in posts:
