@@ -1,5 +1,6 @@
 from datetime import datetime
-from pydantic import BaseModel, Field, ConfigDict, EmailStr
+
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
 class UserBase(BaseModel):
@@ -13,6 +14,7 @@ class UserCreate(UserBase):
 
 class UserResponse(UserBase):
     model_config = ConfigDict(from_attributes=True)
+
     id: int
     image_file: str | None
     image_path: str
@@ -30,17 +32,17 @@ class PostBase(BaseModel):
 
 
 class PostCreate(PostBase):
-    user_id: int
+    user_id: int  # TEMPORARY
 
 
-class PostUpdate(PostBase):
-    title: str = Field(default=None, min_length=1, max_length=100)
-    content: str = Field(default=None, min_length=1)
-    post_id: int
+class PostUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=1, max_length=100)
+    content: str | None = Field(default=None, min_length=1)
 
 
 class PostResponse(PostBase):
     model_config = ConfigDict(from_attributes=True)
+
     id: int
     user_id: int
     date_posted: datetime

@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from datetime import UTC, datetime
 
 from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
@@ -20,7 +21,8 @@ class User(Base):
     )
 
     posts: Mapped[list[Post]] = relationship(
-        back_populates="author", cascade="all, delete-orphan"
+        back_populates="author",
+        cascade="all, delete-orphan",
     )
 
     @property
